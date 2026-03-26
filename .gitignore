@@ -21,17 +21,17 @@ Thumbs.db
 .idea/
 
 # Large external inputs
-input/gtfs/
-input/nuts3_shapes/
-input/osm/
-input/rental_price/
+input/gtfs/*
+input/nuts3_shapes/*
+input/osm/*
+input/rental_price/*
 
 # Generated Stadtteil geometry and caches
-data/intermediate/
-data/raw/
-data/processed/
+data/intermediate/*
+data/raw/*
+data/processed/*
 
-outputs/
+outputs/*
 
 # Generated per-stage documentation
 README_rent_by_stdt.md
@@ -41,3 +41,5 @@ README_commute_ranking_stdt.md
 
 
 archive/
+
+!.gitkeep
