@@ -24,7 +24,8 @@ INTERMEDIATE_DIR = ROOT / "data" / "intermediate"
 PROCESSED_DIR = ROOT / "data" / "processed"
 MAPS_DIR = ROOT / "outputs" / "maps"
 COMMUTE_CACHE_DIR = PROCESSED_DIR / "commute_compute_cache_stdt"
-DEFAULT_CONFIG_PATH = ROOT / "config" / "commute_defaults.json"
+PRIVATE_CONFIG_PATH = ROOT / "config" / "MyConfig.json"
+FALLBACK_CONFIG_PATH = ROOT / "config" / "commute_defaults.json"
 
 REQUIRED_CONFIG_KEYS = {
     "workplace_coordinate",
@@ -68,18 +69,26 @@ def load_config_values(config_path: Path | None) -> dict[str, Any]:
     return data
 
 
+def resolve_default_config_path() -> Path:
+    if PRIVATE_CONFIG_PATH.exists():
+        return PRIVATE_CONFIG_PATH
+    return FALLBACK_CONFIG_PATH
+
 def parse_args_with_config() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Rank residential Stadtteile in the target district using GTFS schedules, rent, and district-scoped mapping."
     )
-    parser.add_argument("--config", type=Path, default=DEFAULT_CONFIG_PATH, help="Path to a JSON config file with default values.")
+    parser.add_argument(
+        "--config",
+        type=Path,
+        default=resolve_default_config_path(),
+        help="Path to a JSON config file with default values.",
+    )
     args = parser.parse_args()
     config_values = load_config_values(args.config)
     config_values["nuts_path"] = Path(config_values["nuts_path"])
     config_values["config"] = args.config
     return argparse.Namespace(**config_values)
-
-
 def parse_coordinate_from_config(args: argparse.Namespace) -> tuple[float, float]:
     coordinate_text = str(getattr(args, "workplace_coordinate", "") or "").strip()
     match = re.search(r"(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)", coordinate_text)
