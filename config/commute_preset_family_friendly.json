@@ -1,0 +1,21 @@
+{
+  "workplace_coordinate": "51.46415939601567, 7.007171041394548",
+  "date": "2026-03-17",
+  "arrival_start": "07:00:00",
+  "arrival_end": "09:00:00",
+  "max_workplace_stop_distance_m": 650.0,
+  "max_transfers": 1,
+  "transfer_radius_m": 100.0,
+  "min_transfer_min": 2.0,
+  "max_transfer_wait_min": 15.0,
+  "transfer_hate": 8,
+  "rent_importance": 6,
+  "time_importance": 7,
+  "frequency_importance": 7,
+  "green_space_importance": 9,
+  "supermarket_importance": 8,
+  "hospital_importance": 4,
+  "typical_size_m2": 45.0,
+  "nuts_path": "input/nuts3_shapes/NUTS_RG_01M_2024_3035.gpkg",
+  "top_n": 50
+}

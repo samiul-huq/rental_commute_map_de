@@ -1,0 +1,9 @@
+pandas
+numpy
+matplotlib
+geopandas
+shapely
+pyogrio
+folium
+branca
+pyarrow

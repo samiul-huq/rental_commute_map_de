@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Large external inputs
+input/gtfs/
+input/nuts3_shapes/
+input/osm/
+input/rental_price/
+
+# Generated Stadtteil geometry and caches
+data/intermediate/
+data/raw/
+data/processed/
+
+outputs/
+
+# Generated per-stage documentation
+README_rent_by_stdt.md
+README_gtfs_stdt_integration.md
+README_osm_quality_stdt_integration.md
+README_commute_ranking_stdt.md
